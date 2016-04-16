@@ -1,0 +1,357 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <style>
+     
+      body { font: 13px Helvetica, Arial; }
+      .graph .xAxis {
+            stroke-width: 1;
+        }
+
+        .graph .xAxis .tick line {
+            stroke: black;
+        }
+
+        .graph .xAxis .tick text {
+            fill: black;
+            font-size: 0.7em;
+        }
+
+        .graph .xAxis .domain {
+            fill: none;
+            stroke: black;
+        }
+
+        .graph .group {
+            fill: none;
+            stroke: black;
+            stroke-width: 1.5;
+        }
+      
+    </style>
+  </head>
+  <body>
+    <div class="graph"></div>
+    <div id = "voting_buttons">
+      <button id = "yay" class ="vote" onclick = "vote(this.id)">Yay</button>
+      <button id = "poop" class ="vote" onclick = "vote(this.id)">poop</button>
+      <button id = "lies" class ="vote" onclick = "vote(this.id)">lies</button>
+      <button id = "scary" class ="vote" onclick = "vote(this.id)">scary</button>
+      <button id = "agreed" class ="vote" onclick = "vote(this.id)">agreed</button>
+    </div>
+  	<div id = "temp"></div>
+  	<script>
+    var new_yay = false,
+            new_poop = false,
+            new_lies = false,
+            new_scary = false,
+            new_agreed = false;
+
+        var limit = 60 * 1,
+            duration = 750,
+            now = new Date(Date.now() - duration);
+
+        var width = 500,
+            height = 200;
+
+        
+    
+
+    var groups = {
+            yay: {
+                value: 0,
+                color: 'orange',
+                data: d3.range(limit).map(function() {
+                    return 0
+                })
+            },
+            poop: {
+                value: 0,
+                color: 'green',
+                data: d3.range(limit).map(function() {
+                    return 0
+                })
+            },
+            lies: {
+                value: 0,
+                color: 'grey',
+                data: d3.range(limit).map(function() {
+                    return 0
+                })
+            },
+            scary: {
+                value: 0,
+                color: 'blue',
+                data: d3.range(limit).map(function() {
+                    return 0
+                })
+            },
+            agreed: {
+                value: 0,
+                color: 'red',
+                data: d3.range(limit).map(function() {
+                    return 0
+                })
+            }
+        }
+        var x = d3.time.scale()
+            .domain([now - (limit - 2), now - duration])
+            .range([0, width])
+
+        var y = d3.scale.linear()
+            .domain([0, 10])
+            .range([height, 0])
+
+        var line = d3.svg.line()
+            .interpolate('basis')
+            .x(function(d, i) {
+                return x(now - (limit - 1 - i) * duration)
+            })
+            .y(function(d) {
+                return y(d)
+            })
+
+        var svg = d3.select('.graph').append('svg')
+            .attr('class', 'chart')
+            .attr('width', width)
+            .attr('height', height + 50)
+
+        var xAxis = svg.append('g')
+            .attr('class', 'x axis')
+            .attr('transform', 'translate(0,' + height + ')')
+            .call(x.axis = d3.svg.axis().scale(x).orient('bottom'))
+
+        var paths = svg.append('g')
+
+        for (var name in groups) {
+            var group = groups[name]
+            group.path = paths.append('path')
+                .data([group.data])
+                .attr('class', name + ' group')
+                .style('stroke', group.color)
+        }
+  		var myRoom = (localStorage.getItem("currentRoom"));
+  		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
+      //var roomRef = dataRef.child("votes/" + myRoom);
+        
+  		
+      function vote(emotion){
+        var now = Math.floor(Date.now() / 1000);
+        //roomRef.update({time: now, vote:emotion});
+        //roomRef.child(now).set({emotion:0, vote:emotion});
+        //roomRef.child(now.toString()).push(emotion);
+        /*roomRef.transaction(function (current_value) {
+          return {time: now, vote:emotion}
+          //return { name: { first: 'Wilma', last: 'Flintstone' } };
+          //return (current_value || 0) + 1;
+        });*/
+        //roomRef.push(emotion);
+        var now = Math.floor(Date.now() / 1000);
+        var roomRef = dataRef.child("votes/" + myRoom + "/" + now + "/" + emotion);
+        roomRef.transaction(function (current_value) {
+            return (current_value || 0) + 1;
+        }, function(error, committed, snapshot) {
+              //new_vote(emotion, snapshot.val());
+              //$("#temp").append(snapshot.val());
+              dataRef.child("votes/" + myRoom + "/current_state/" + emotion).transaction(function(current_value) {
+                return snapshot.val();
+              })
+              
+        });
+        
+        dataRef.child("votes/" + myRoom + "/current_state").on("child_changed", function(snapshot){
+          //console.log(snapshot.key());
+          //console.log(snapshot.val());
+          if(snapshot.key() == 'yay'){
+            //console.log('yay');
+            new_yay = true;
+            groups.yay.value = snapshot.val();
+
+
+          }
+          if(snapshot.key() == 'poop'){
+            //console.log('poop');
+            new_poop = true;
+            groups.poop.value = snapshot.val();
+          }
+          if(snapshot.key() == 'lies'){
+            //console.log('lies');
+            new_lies = true;
+            groups.lies.value = snapshot.val();
+          }
+          if(snapshot.key() == 'scary'){
+            //console.log('scary');
+            new_scary = true;
+            groups.scary.value = snapshot.val();
+          }
+          if(snapshot.key() == 'agreed'){
+            //console.log('agreed');
+            new_agreed = true;
+            groups.agreed.value = snapshot.val();
+          }
+        })
+        console.log(groups);
+        /*roomRef.on("value", function(snapshot) {
+          var result = snapshot.val();
+          new_vote(emotion, snapshot.val());
+           $("#temp").append(snapshot.val());
+          console.log("The updated value of " + emotion + " at " + now + " is " + result);
+        });*/
+        /*roomRef.orderByChild("emotion").equalTo(emotion).transaction(function(current_value){
+          return(current_value || 0) + 1;
+        })*/
+        
+        /*function(error, committed, snapshot) {
+        if (error) {
+        console.log('Transaction failed abnormally!', error);
+        } else if (!committed) {
+          console.log('We aborted the transaction (because wilma already exists).');
+        } else {
+        console.log('User wilma added!');
+        }
+        console.log("Wilma's data: ", snapshot.val());
+        }*/
+
+
+      }
+
+      function new_vote(vote, value) {
+         if (vote == 'yay') {
+                new_yay = true;
+                groups.yay.value = value;
+            } 
+            if (vote == 'poop') {
+                new_poop = true;
+                groups.poop.value = value;
+            }
+            if (vote == 'lies') {
+                new_lies = true;
+                groups.lies.value = value;
+            }
+            if (vote == 'scary') {
+                new_scary = true;
+                groups.scary.value = value;
+            }
+            if (vote == 'agreed') {
+                new_agreed = true;
+                groups.agreed.value = value;
+            }
+      }
+
+      function getData() {
+            if(new_yay) {
+
+                //groups.yay.value = 20 + Math.random() * 100;
+                new_yay = false;
+
+                //dataRef.child("votes/" + myRoom + "/current_state").set({yay:0});
+            } else {
+                groups.yay.value = 0;
+                dataRef.child("votes/" + myRoom + "/current_state/yay").set(0);
+            }
+
+            if(new_poop) {
+                //groups.poop.value = 20 + Math.random() * 100;
+                new_poop = false
+            }else {
+                 groups.poop.value = 0;
+                 dataRef.child("votes/" + myRoom + "/current_state/poop").set(0);
+            }
+
+            if(new_lies) {
+                //groups.lies.value = 20 + Math.random() * 100;
+                new_lies = false;
+            }else{
+                 groups.lies.value = 0;
+                 dataRef.child("votes/" + myRoom + "/current_state/lies").set(0);
+            }
+
+            if(new_scary) {
+                //groups.scary.value = 20 + Math.random() * 100;
+                new_scary = false;
+            }else {
+                 groups.scary.value = 0;
+                 dataRef.child("votes/" + myRoom + "/current_state/scary").set(0);
+            }
+
+            if(new_agreed) {
+                //groups.agreed.value = 20 + Math.random() * 100;
+                new_agreed = false;
+            }else {
+                 groups.agreed.value = 0;
+                 dataRef.child("votes/" + myRoom + "/current_state/agreed").set(0);
+            }
+            var scale = 5 + groups.yay.value + groups.poop.value + groups.lies.value + groups.scary.value + groups.agreed.value;
+            return scale;
+        }
+
+        function tick() {
+        now = new Date()
+            y_domain = getData();
+            // Add new values
+            for (var name in groups) {
+                var group = groups[name]
+                group.data.push(group.value) // Real values arrive at irregular intervals
+                //group.data.push(20 + Math.random() * 100)
+                group.path.attr('d', line)
+            }
+
+            // Shift domain
+            x.domain([now - (limit - 2) * duration, now - duration])
+            //y.domain([0, number_users * 5]);
+            // Slide x-axis left
+            xAxis.transition()
+                .duration(duration)
+                .ease('linear')
+                .call(x.axis)
+
+            // Slide paths left
+            paths.attr('transform', null)
+                .transition()
+                .duration(duration)
+                .ease('linear')
+                .attr('transform', 'translate(' + x(now - (limit - 1) * duration) + ')')
+                .each('end', tick)
+
+            // Remove oldest data point from each group
+            for (var name in groups) {
+                var group = groups[name]
+                group.data.shift()
+            }
+        }
+        tick();
+      /*roomRef.child(Math.floor(Date.now() / 1000).toString()).on("child_added", function(snapshot) {
+        //var time = Math.floor(Date.now() / 1000);
+        //console.log("TIME: " + time );
+        console.log("test");
+        $("#temp").append(snapshot.val());
+        console.log(snapshot.val());
+      });*/
+      /*roomRef.on("value", function(snapshot){
+
+        console.log(snapshot.val());
+      })*/
+      /*roomRef.orderByChild("time").equalTo(Math.floor(Date.now() / 1000).toString()).on("child_added", function(snapshot){
+        console.log("test");
+        console.log("VALUE " + snapshot.val().vote);
+      })*/
+      /*ref.orderByChild("height").equalTo(25).on("child_added", function(snapshot) {
+          console.log(snapshot.key());
+        });*/
+
+      /*ref.orderByChild("height").equalTo(25).on("child_added", function(snapshot) {
+      console.log(snapshot.key());
+      });*/
+      /*var upvotesRef = new Firebase('https://docs-examples.firebaseio.com/android/saving-data/fireblog/posts/-JRHTHaIs-jNPLXOQivY/upvotes');
+      upvotesRef.transaction(function (current_value) {
+      return (current_value || 0) + 1;
+      });*/
+      
+
+
+
+  	</script>
+  </body>
+</html>

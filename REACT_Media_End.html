@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+  	<div class = "backend_inputs">
+  		<label for="room_name">Enter a room name:</label>
+  		<input type = "text" id = "room_name">
+
+  	</div>
+  	<div class = "backend_inputs">
+  		<label for ="youtube url">Enter a Youtube Embed</label>
+  		<input type="text" id="video_url">
+  	</div>
+
+
+  	<button id = "add_room" onclick="addRoom()">Add</button>
+  	<script>
+  		//var Firebase = require("firebase");
+  		var userName='DEFAULT';
+  		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
+  		
+  		var roomName = $("#room_name");
+  		var videoLink = $("#video_url");
+
+  		var roomRef = dataRef.child("rooms");
+
+
+  		function addRoom(){
+  			var name = roomName.val();
+  			var video = videoLink.val();
+  			roomRef.push({room_name:name, url:video, active:true, owner_name:userName});
+  			roomName.val('');
+  			videoLink.val('');
+  			//console.log("name: " + name + " video: " + video);
+  		}
+
+
+
+
+
+  	</script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id = "available_rooms">
+      <ul id = "rooms_list">
+        
+      </ul>
+    </div>
+  	
+  	<script>
+  		
+  		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
+  		var roomRef = dataRef.child("rooms");
+      function createRoomList(){
+        var allRooms = $("#rooms_list");
+        roomRef.on("child_added", function(snapshot){
+          var new_room = snapshot.val();
+          var room_li = '<li class = room_link><a href=REACT_Room.html onclick="setCurrentRoom(\''+new_room.room_name+'\')" >' + new_room.room_name + '</a></li>';
+          console.log(room_li)
+          allRooms.append(room_li);
+        })
+          //<li><a href="#" onclick="joinRoom(\''+rooms[i]+'\')">' + rooms[i] + '</a></li>'
+
+      }
+  		createRoomList();
+
+      function setCurrentRoom(current_room){
+        localStorage.setItem("currentRoom", current_room);
+      }
+      /*roomRef.on("child_added", function(snapshot) {
+        console.log("room: ");
+        console.log(snapshot.val());
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });*/
+
+
+
+
+  	</script>
+  </body>
+</html>
