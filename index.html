@@ -15,7 +15,10 @@
     </div>
   </div>	
   	<script>
-  		
+  		/*window.addEventListener('popstate', function(event) {
+        var state = event.state;
+        console.log(state);
+      });*/
   		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
   		var roomRef = dataRef.child("rooms");
       
