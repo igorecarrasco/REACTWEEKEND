@@ -5,6 +5,14 @@ body {
 	margin:0;
 	overflow: hidden;
 }
+.wrapper {
+	padding:0;
+	margin:0;
+	display:flex;
+	flex-direction: column;
+	width: 100vh;
+	height:100vw;
+}
 .header {
 	position: relative;
 	top:2vh;
@@ -16,4 +24,9 @@ body {
 .header img {
 	width:1300px;
 	height:55px;
+}
+#available_rooms {
+	width: 100vw;
+	display:flex;
+	justify-content: center;
 }
