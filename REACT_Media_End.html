@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-  
+
   	<div class = "backend_inputs">
   		<label for="room_name">Enter a room name:</label>
   		<input type = "text" id = "room_name">
@@ -15,6 +15,10 @@
   		<label for ="youtube url">Enter a Youtube Embed</label>
   		<input type="text" id="video_url">
   	</div>
+    <div class="backend_inputs">
+      <label for="image url">Enter an Image URL</label>
+      <input type="text" id="image_url">
+    </div>
 
 
   	<button id = "add_room" onclick="addRoom()">Add</button>
@@ -25,6 +29,8 @@
   		
   		var roomName = $("#room_name");
   		var videoLink = $("#video_url");
+      var imageLink = $("#image_url");
+
 
   		var roomRef = dataRef.child("rooms");
 
@@ -32,9 +38,11 @@
   		function addRoom(){
   			var name = roomName.val();
   			var video = videoLink.val();
-  			roomRef.push({room_name:name, url:video, active:true, owner_name:userName});
+        var image = imageLink.val();
+  			roomRef.push({room_name:name, url:video, active:true, owner_name:userName, image:image});
   			roomName.val('');
   			videoLink.val('');
+        imageLink.val('');
   			//console.log("name: " + name + " video: " + video);
   		}
 

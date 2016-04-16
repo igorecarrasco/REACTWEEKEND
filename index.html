@@ -13,16 +13,17 @@
         
       </ul>
     </div>
-  	
+  </div>	
   	<script>
   		
   		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
   		var roomRef = dataRef.child("rooms");
+      
       function createRoomList(){
         var allRooms = $("#rooms_list");
         roomRef.on("child_added", function(snapshot){
           var new_room = snapshot.val();
-          var room_li = '<li class = room_link><a href=REACT_Room.html onclick="setCurrentRoom(\''+new_room.room_name+'\')" >' + new_room.room_name + '</a></li>';
+          var room_li = '<li class="room_link"><a href=REACT_Room.html onclick="setCurrentRoom(\''+new_room.room_name+'\')" >' + '<img width=500px src='+new_room.image+' >' + '<span class=roomtitle>' +new_room.room_name+ '</span></a></li>';
           console.log(room_li)
           allRooms.append(room_li);
         })
@@ -45,6 +46,5 @@
 
 
   	</script>
-    </div>
   </body>
 </html>

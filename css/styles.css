@@ -3,15 +3,6 @@ body {
 	font-family: 'Kanit', sans-serif;
 	padding:0;
 	margin:0;
-	overflow: hidden;
-}
-.wrapper {
-	padding:0;
-	margin:0;
-	display:flex;
-	flex-direction: column;
-	width: 100vh;
-	height:100vw;
 }
 .header {
 	position: relative;
@@ -25,15 +16,39 @@ body {
 	width:1300px;
 	height:55px;
 }
+.wrapper {
+	width:100vw;
+	height:100vh;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
 #available_rooms {
 	width: 100vw;
 	display:flex;
 	justify-content: center;
 }
-#rooms_list li {
+#rooms_list {
 	list-style-type: none;
+	padding: 0;
+
 }
 .room_link {
-	border:5px yellow solid;
+	width:500px;
+	height:100px;
+	padding:0;
+	border:2px yellow solid;
 	margin: 5px;
+	background-color:rgba(255,255,0,0.6));
+	overflow:hidden;
+}
+.roomtitle{
+	position: absolute;
+	top:100px;
+	width:100%;
+}
+a {
+	text-decoration: none;
+	padding:0;
+	margin: 0;
 }
