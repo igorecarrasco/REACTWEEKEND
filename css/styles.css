@@ -64,6 +64,8 @@ body {
 	width:100%;
 }
 .youtubevid {
+	position:relative;
+	left:40px;
 	width:560;
 	height:315;
 }
