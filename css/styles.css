@@ -13,7 +13,7 @@ body {
 }
 .vote {
 	width:50px;
-	height:auto;
+	height:50px;
 	cursor: pointer;
 	padding:4px;
 }
@@ -95,8 +95,29 @@ a {
 	padding:0;
 	margin: 0;
 }
-@media (max-width:415) {
+@media screen and (max-width: 415px) {
 	iframe {
 		display:none;
+	}
+	.header img {
+	width:auto;
+	height:55px;
+	}
+	.wrapper { 
+		flex-direction: column;
+	}
+	.twitwidget{
+		margin-left:0; 
+	}
+	#voting_buttons {
+		position: relative;
+		height:140px;
+		width:100%;
+		justify-content:center;
+		align-content: center;
+		flex-wrap: wrap;
+	}
+	body {
+		overflow:visible;	
 	}
 }
