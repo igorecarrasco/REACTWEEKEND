@@ -1,4 +1,19 @@
 body {
 	background-color: #003333;
 	font-family: 'Kanit', sans-serif;
+	padding:0;
+	margin:0;
+	overflow: hidden;
+}
+.header {
+	position: relative;
+	top:2vh;
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	height:auto;
+}
+.header img {
+	width:1300px;
+	height:55px;
 }
