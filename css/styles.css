@@ -15,8 +15,25 @@ body {
 	width:50px;
 	height:auto;
 	cursor: pointer;
-	border:2px solid orange;
 	padding:4px;
+}
+#yay {
+	border: 2px solid orange;
+}
+#poop {
+	border: 2px solid green;
+}
+#lies {
+	border: 2px solid teal;
+}
+#scary {
+	border:2px solid purple;
+}
+#agreed {
+	border:2px solid #ffcc00;
+}
+.twitwidget {
+	margin:20px;
 }
 .graph{
 	position: relative;
@@ -36,10 +53,9 @@ body {
 	height:55px;
 }
 .wrapper {
-	position: absolute;
+	position: relative;
 	height: 100vh;
 	width:100vw;
-	top:20px;
 	display:flex;
 	align-items: center;
 	justify-content: center;

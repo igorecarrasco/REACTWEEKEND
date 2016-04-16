@@ -29,7 +29,7 @@
         .graph .group {
             fill: none;
             stroke: black;
-            stroke-width: 1.5;
+            stroke-width: 3.25;
         }
       
     </style>
@@ -48,6 +48,8 @@
       <img src=images/uh.png id = "agreed" class ="vote" onclick = "vote(this.id)">
     </div>
     </div>
+    <div class=twitwidget><a class="twitter-timeline" href="https://twitter.com/livereact" data-widget-id="719637328818487297" data-chrome="transparent,noheader,nofooter" width=290px >Tweets by @livereact</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
     </div>
     <div id = "temp"></div>
     <script>
@@ -84,21 +86,21 @@
             },
             lies: {
                 value: 0,
-                color: 'grey',
+                color: 'teal',
                 data: d3.range(limit).map(function() {
                     return 0
                 })
             },
             scary: {
                 value: 0,
-                color: 'blue',
+                color: 'purple',
                 data: d3.range(limit).map(function() {
                     return 0
                 })
             },
             agreed: {
                 value: 0,
-                color: 'red',
+                color: '#ffcc00',
                 data: d3.range(limit).map(function() {
                     return 0
                 })
