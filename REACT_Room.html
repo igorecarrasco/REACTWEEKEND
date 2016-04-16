@@ -35,7 +35,11 @@
     </style>
   </head>
   <body>
+<<<<<<< Updated upstream
     <div class=header><img src="images/reactheader.png"></div>
+=======
+    <a href="index.html" id = "back_button" onclick="leaveRoom()">Back</a>
+>>>>>>> Stashed changes
     <div class="graph"></div>
     <div id = "voting_buttons">
       <button id = "yay" class ="vote" onclick = "vote(this.id)">Yay</button>
@@ -137,8 +141,34 @@
         }
   		var myRoom = (localStorage.getItem("currentRoom"));
   		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
+      var allRoomsRef = dataRef.child("rooms");
       //var roomRef = dataRef.child("votes/" + myRoom);
-        
+      dataRef.child("votes/" + myRoom + "/active_users").on("value", function(snapshot){
+        console.log("current active users " + snapshot.val());
+        y.domain([0, snapshot.val() * 5]);
+      });
+
+      joinRoom();
+      function joinRoom(){
+        dataRef.child("votes/" + myRoom + "/active_users").transaction(function(current_value){
+          return (current_value || 0) + 1;
+        })
+        /*allRoomsRef.on('value', function(snapshot){
+          //console.log(snapshot.val().room_name);
+          snapshot.forEach(function(childSnapshot){
+            if(childSnapshot.val().room_name == myRoom){
+              console.log(childSnapshot.val().number_users);
+            }
+          })
+        })*/
+      }
+
+      function leaveRoom(){
+        dataRef.child("votes/" + myRoom + "/active_users").transaction(function(current_value){
+          return (current_value || 0) - 1;
+        })
+
+      }
   		
       function vote(emotion){
         var now = Math.floor(Date.now() / 1000);
