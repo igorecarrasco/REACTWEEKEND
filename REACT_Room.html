@@ -35,18 +35,16 @@
     </style>
   </head>
   <body>
-<<<<<<< Updated upstream
     <div class=header><img src="images/reactheader.png"></div>
-=======
     <a href="index.html" id = "back_button" onclick="leaveRoom()">Back</a>
->>>>>>> Stashed changes
-    <div class="graph"></div>
+    <div class=youtubevid><iframe width="560" height="315" src="https://www.youtube.com/embed/dYFPaU0581Y" frameborder="0" allowfullscreens style=position:absolute></iframe>
+    <div class="graph"></div></div>
     <div id = "voting_buttons">
-      <button id = "yay" class ="vote" onclick = "vote(this.id)">Yay</button>
-      <button id = "poop" class ="vote" onclick = "vote(this.id)">poop</button>
-      <button id = "lies" class ="vote" onclick = "vote(this.id)">lies</button>
-      <button id = "scary" class ="vote" onclick = "vote(this.id)">scary</button>
-      <button id = "agreed" class ="vote" onclick = "vote(this.id)">agreed</button>
+      <img src=images/yay.png id = "yay" class ="vote" onclick = "vote(this.id)">
+      <img src=images/poop.png id = "poop" class ="vote" onclick = "vote(this.id)">
+      <img src=images/nay.png id = "lies" class ="vote" onclick = "vote(this.id)">
+      <img src=images/wtf.png id = "scary" class ="vote" onclick = "vote(this.id)">
+      <img src=images/uh.png id = "agreed" class ="vote" onclick = "vote(this.id)">
     </div>
   	<div id = "temp"></div>
   	<script>
@@ -60,8 +58,8 @@
             duration = 750,
             now = new Date(Date.now() - duration);
 
-        var width = 500,
-            height = 200;
+        var width = 515,
+            height = 315;
 
         
     
