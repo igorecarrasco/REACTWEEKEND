@@ -201,7 +201,38 @@ $(document).ready(function(){
               })
               
         });
-        
+
+        dataRef.child("votes/" + myRoom + "/current_state").on("child_added", function(snapshot){
+          //console.log(snapshot.key());
+          //console.log(snapshot.val());
+          if(snapshot.key() == 'yay'){
+            //console.log('yay');
+            new_yay = true;
+            groups.yay.value = snapshot.val();
+
+
+          }
+          if(snapshot.key() == 'poop'){
+            //console.log('poop');
+            new_poop = true;
+            groups.poop.value = snapshot.val();
+          }
+          if(snapshot.key() == 'lies'){
+            //console.log('lies');
+            new_lies = true;
+            groups.lies.value = snapshot.val();
+          }
+          if(snapshot.key() == 'scary'){
+            //console.log('scary');
+            new_scary = true;
+            groups.scary.value = snapshot.val();
+          }
+          if(snapshot.key() == 'agreed'){
+            //console.log('agreed');
+            new_agreed = true;
+            groups.agreed.value = snapshot.val();
+          }
+        })
         dataRef.child("votes/" + myRoom + "/current_state").on("child_changed", function(snapshot){
           //console.log(snapshot.key());
           //console.log(snapshot.val());
