@@ -36,7 +36,7 @@
   </head>
   <body>
     <div class=header><img src="images/reactheader.png"></div>
-    <a href="index.html" id = "back_button" onclick="leaveRoom()">Back</a>
+    <a href="index.html" id = "back_button">Back</a>
     <div class=wrapper>
       <div class=youtubevid><iframe width="560" height="315" src="https://www.youtube.com/embed/dYFPaU0581Y?autoplay=1" frameborder="0" allowfullscreens style=position:absolute></iframe>
       <div class="graph"></div>
@@ -142,6 +142,14 @@
       var myRoom = (localStorage.getItem("currentRoom"));
       var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
       var allRoomsRef = dataRef.child("rooms");
+$(document).ready(function(){
+        $(window).unload(function(){
+            dataRef.child("votes/" + myRoom + "/active_users").transaction(function(current_value){
+              return (current_value || 0) - 1;
+            })
+            console.log("Goodbye!");
+        });
+      });
       //var roomRef = dataRef.child("votes/" + myRoom);
       dataRef.child("votes/" + myRoom + "/active_users").on("value", function(snapshot){
         console.log("current active users " + snapshot.val());
