@@ -4,11 +4,12 @@ body {
 	padding:0;
 	margin:0;
 }
-h1 {
+.titletitle {
+	position: relative;
 	font-family: Kanit;
 	font-weight: 800;
-	color:white;
-	display: none;
+	color:#DDDDDD;
+	left:200px;
 }
 #voting_buttons {
 	position: absolute;
@@ -42,13 +43,13 @@ h1 {
 	padding-top:110px;
 	margin-left:60px;
 }
-.graph{
+.graph {
 	position: relative;
 	top:0px;
-	z-index: 5;
+	z-index:5;
 }
 .header {
-	position: absolute;
+	position: relative;
 	top:2vh;
 	display: flex;
 	justify-content: center;
@@ -60,8 +61,8 @@ h1 {
 	height:55px;
 }
 .wrapper {
-	position: absolute;
-	height: 100vh;
+	position: relative;
+	height: 50vh;
 	width:100vw;
 	display:flex;
 	align-items:center;
@@ -105,20 +106,25 @@ a {
 	iframe {
 		display:none;
 	}
+	.titletitle {
+		text-align: center;
+		left:0;
+	}
 	.header img {
-	width:250%;
+	width:245%;
 	height:55px;
 	}
 	.wrapper { 
 		flex-direction: column;
+		height:100%;
 	}
 	.twitwidget{
 		margin-left:0;
-		margin-top:50px;
 		top:20px;
 	}
 	#voting_buttons {
 		position: relative;
+		top:20px;
 		height:140px;
 		width:100%;
 		justify-content:center;
@@ -130,5 +136,6 @@ a {
 	}
 	.graph {
 		width: 415px;
+		height:315px;
 	}
 }
