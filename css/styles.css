@@ -33,7 +33,8 @@ body {
 	border:2px solid #ffcc00;
 }
 .twitwidget {
-	margin:20px;
+	margin-left:60px;
+	padding-top:110px;
 }
 .graph{
 	position: relative;
@@ -41,7 +42,7 @@ body {
 	z-index: 5;
 }
 .header {
-	position: relative;
+	position: absolute;
 	top:2vh;
 	display: flex;
 	justify-content: center;
@@ -57,7 +58,7 @@ body {
 	height: 100vh;
 	width:100vw;
 	display:flex;
-	align-items: center;
+	align-items:center;
 	justify-content: center;
 }
 #available_rooms {
