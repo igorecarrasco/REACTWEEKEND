@@ -4,6 +4,11 @@ body {
 	padding:0;
 	margin:0;
 }
+h1 {
+	font-family: Kanit;
+	font-weight: 800;
+	color:white;
+}
 #voting_buttons {
 	position: absolute;
 	display:flex;
@@ -54,7 +59,7 @@ body {
 	height:55px;
 }
 .wrapper {
-	position: relative;
+	position: absolute;
 	height: 100vh;
 	width:100vw;
 	display:flex;
@@ -100,14 +105,16 @@ a {
 		display:none;
 	}
 	.header img {
-	width:auto;
+	width:250%;
 	height:55px;
 	}
 	.wrapper { 
 		flex-direction: column;
 	}
 	.twitwidget{
-		margin-left:0; 
+		margin-left:0;
+		margin-top:50px;
+		top:20px;
 	}
 	#voting_buttons {
 		position: relative;
@@ -119,5 +126,8 @@ a {
 	}
 	body {
 		overflow:visible;	
+	}
+	.graph {
+		width: 415px;
 	}
 }

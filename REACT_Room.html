@@ -31,16 +31,13 @@
             stroke: black;
             stroke-width: 3.25;
         }
-        body {
-          overflow: hidden;
-        }
     </style>
   </head>
   <body>
    <div class=header><img src="images/reactheader.png"></div>
     <a href="index.html" id = "back_button">Back</a>
+    <h1>React to the:<br> Democratic Debate</h1>
     <div class=wrapper>
-
       <div class=youtubevid><iframe width="560" height="315" src="https://www.youtube.com/embed/dYFPaU0581Y?autoplay=1" frameborder="0" allowfullscreens style=position:absolute></iframe>
       <div class="graph"></div>
     <div id = "voting_buttons">
@@ -51,7 +48,7 @@
       <img src=images/uh.png id = "agreed" class ="vote" onclick = "vote(this.id)">
     </div>
     </div>
-    <div class=twitwidget><a class="twitter-timeline" href="https://twitter.com/livereact" data-widget-id="719637328818487297" data-chrome="transparent,noheader,nofooter" width=290px >Tweets by @livereact</a>
+    <div class=twitwidget><a class="twitter-timeline" href="https://twitter.com/livereact" data-widget-id="719637328818487297" data-chrome="transparent,noheader,nofooter" width=100% >Tweets by @livereact</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
     </div>
     <div id = "temp"></div>
