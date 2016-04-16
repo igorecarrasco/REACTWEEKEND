@@ -1,5 +1,5 @@
 body {
-	background-color: #003333;
+	background-color: black;
 	font-family: 'Kanit', sans-serif;
 	padding:0;
 	margin:0;
@@ -8,6 +8,7 @@ h1 {
 	font-family: Kanit;
 	font-weight: 800;
 	color:white;
+	display: none;
 }
 #voting_buttons {
 	position: absolute;
