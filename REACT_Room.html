@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Kanit:800' rel='stylesheet' type='text/css'>
     <style>
-     
+
       body { font: 13px Helvetica, Arial; }
       .graph .xAxis {
             stroke-width: 1;
@@ -60,14 +60,14 @@
             new_agreed = false;
 
         var limit = 60 * 1,
-            duration = 750,
+            duration = 100,
             now = new Date(Date.now() - duration);
 
         var width = 560,
             height = 315;
 
-        
-    
+
+
 
     var groups = {
             yay: {
@@ -180,7 +180,7 @@ $(document).ready(function(){
         })
 
       }
-      
+
       function vote(emotion){
         var now = Math.floor(Date.now() / 1000);
         //roomRef.update({time: now, vote:emotion});
@@ -202,7 +202,7 @@ $(document).ready(function(){
               dataRef.child("votes/" + myRoom + "/current_state/" + emotion).transaction(function(current_value) {
                 return snapshot.val();
               })
-              
+
         });
 
         dataRef.child("votes/" + myRoom + "/current_state").on("child_added", function(snapshot){
@@ -277,7 +277,7 @@ $(document).ready(function(){
         /*roomRef.orderByChild("emotion").equalTo(emotion).transaction(function(current_value){
           return(current_value || 0) + 1;
         })*/
-        
+
         /*function(error, committed, snapshot) {
         if (error) {
         console.log('Transaction failed abnormally!', error);
@@ -296,7 +296,7 @@ $(document).ready(function(){
          if (vote == 'yay') {
                 new_yay = true;
                 groups.yay.value = value;
-            } 
+            }
             if (vote == 'poop') {
                 new_poop = true;
                 groups.poop.value = value;
@@ -423,7 +423,7 @@ $(document).ready(function(){
       upvotesRef.transaction(function (current_value) {
       return (current_value || 0) + 1;
       });*/
-      
+
 
 
 
