@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Kanit:800' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
     <style>
 
       body { font: 13px Helvetica, Arial; }
@@ -34,13 +33,13 @@
             stroke-width: 3.25;
         }
     </style>
+
   </head>
   <body>
-   <div class=header><img src="images/reactheader.png"></div>
-    <a href="index.html" id = "back_button">Back</a>
+   <div class=header><a href="index.html" id = "back_button"><img src="images/reactheader.png"></a></div>
     <div class=titletitle><h1>React to the:<br> Democratic Debate</h1></div>
     <div class=wrapper>
-      <div class=youtubevid><iframe width="560" height="315" src="https://www.youtube.com/embed/dYFPaU0581Y?autoplay=1" frameborder="0" allowfullscreens style=position:absolute></iframe>
+      <div class=youtubevid><iframe id=stream width="560" height="315" src="https://www.youtube.com/embed/dYFPaU0581Y?autoplay=1" frameborder="0" allowfullscreens style=position:absolute></iframe>
       <div class="graph"></div>
     <div id = "voting_buttons">
       <img src=images/yay.png id = "yay" class ="vote" onclick = "vote(this.id)">
