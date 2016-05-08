@@ -55,6 +55,7 @@
     </div>
     <div id = "temp"></div>
     <script>
+
     var new_yay = false,
             new_poop = false,
             new_lies = false,
@@ -167,6 +168,9 @@ $(document).ready(function(){
       joinRoom();
       function joinRoom(){
         dataRef.child("votes/" + myRoom + "/active_users").transaction(function(current_value){
+          return (current_value || 0) + 1;
+        })
+        dataRef.child("votes/" + myRoom + "/total_users").transaction(function(current_value){
           return (current_value || 0) + 1;
         })
         /*allRoomsRef.on('value', function(snapshot){

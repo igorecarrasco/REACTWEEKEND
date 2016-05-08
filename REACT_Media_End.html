@@ -7,44 +7,55 @@
   </head>
   <body>
 
-  	<div class = "backend_inputs">
-  		<label for="room_name">Enter a room name:</label>
-  		<input type = "text" id = "room_name">
+    <div class = "backend_inputs">
+      <label for="room_name">Enter a room name:</label>
+      <input type = "text" id = "room_name">
 
-  	</div>
-  	<div class = "backend_inputs">
-  		<label for ="youtube url">Enter a Youtube Embed</label>
-  		<input type="text" id="video_url">
-  	</div>
+    </div>
+    <div class = "backend_inputs">
+      <label for ="youtube url">Enter a Youtube Embed</label>
+      <input type="text" id="video_url">
+    </div>
     <div class="backend_inputs">
       <label for="image url">Enter an Image URL</label>
       <input type="text" id="image_url">
     </div>
+    
 
 
-  	<button id = "add_room" onclick="addRoom()">Add</button>
-  	<script>
-  		//var Firebase = require("firebase");
-  		var userName='DEFAULT';
-  		var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
-  		
-  		var roomName = $("#room_name");
-  		var videoLink = $("#video_url");
-      var imageLink = $("#image_url");
+    <button id = "add_room" onclick="addRoom()">Add</button>
+
+    <div id = "available_rooms">
+      <ul id = "rooms_list">
 
 
+      </ul>
+    </div>
+    <script>
+      //var Firebase = require("firebase");
+      var userName='DEFAULT';
+      var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
+      var roomRef = dataRef.child("rooms");
 
-  		var roomRef = dataRef.child("rooms");
+
+      
+      var roomName = $("#room_name");
+      var videoLink = $("#video_url");
+        var imageLink = $("#image_url");
 
 
-  		function addRoom(){
-  			var name = roomName.val();
-  			var video = videoLink.val();
+      var roomRef = dataRef.child("rooms");
+      var myUserName = (localStorage.getItem("username"));
+
+      function addRoom(){
+        var name = roomName.val();
+        var video = videoLink.val();
         var image = imageLink.val();
-  			roomRef.push({room_name:name, url:video, active:true, owner_name:userName, image:image});
-  			roomName.val('');
-  			videoLink.val('');
+        roomRef.push({room_name:name, url:video, active:true, owner_name:userName, image:image});
+        roomName.val('');
+        videoLink.val('');
         imageLink.val('');
+
   			//console.log("name: " + name + " video: " + video);
   		}
       /*Save the url to the local storage so we can use it in react room
@@ -56,7 +67,29 @@
       localStorage.setItem("youtubeLink", youtubeLink);
       })*/
 
+        //console.log("name: " + name + " video: " + video);
+      }
 
-  	</script>
+      function createRoomList(){
+        var allRooms = $("#rooms_list");
+        roomRef.on("child_added", function(snapshot){
+          var new_room = snapshot.val();
+          var room_li = '<li><a href=make_graph.html onclick="setCurrentRoom(\''+new_room.room_name+'\')" >' +new_room.room_name+ '</a></li>';
+          console.log(room_li)
+          allRooms.append(room_li);
+        })
+          //<li><a href="#" onclick="joinRoom(\''+rooms[i]+'\')">' + rooms[i] + '</a></li>'
+
+      }
+                createRoomList();
+
+      function setCurrentRoom(current_room){
+        localStorage.setItem("see_room_data", current_room);
+      }
+
+
+
+
+    </script>
   </body>
 </html>
