@@ -440,6 +440,10 @@ if (image == "yay") {
     {document.getElementById("yay").src="images/yay.png"}, 300)
 } 
 else if(image == "poop"){
+  $('.youtubevid').prepend("<div id=pumpkins></div>");
+  pumpkins();
+  setTimeout(function(){ 
+    $('#pumpkins').remove()}, 5000);
   document.getElementById("poop").src = "images/poop2.png";
   setTimeout(function()
     {document.getElementById("poop").src="images/poop.png"}, 300)
@@ -462,8 +466,7 @@ else if (image=="agreed"){
 }
 
 }
-       function pumpkins() {
-    
+      function pumpkins() {
         var pumpkin = $('<div class="pooprain"></div>');
         $('#pumpkins').prepend(pumpkin);
         pumpX = Math.floor(Math.random() * $('#stream').width());
