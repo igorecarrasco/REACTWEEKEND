@@ -33,6 +33,7 @@
       var imageLink = $("#image_url");
 
 
+
   		var roomRef = dataRef.child("rooms");
 
 
@@ -46,9 +47,14 @@
         imageLink.val('');
   			//console.log("name: " + name + " video: " + video);
   		}
-
-
-
+      /*Save the url to the local storage so we can use it in react room
+      var dataRooms=dataRef.child("rooms");
+      dataRooms.on("child_added", function(data){
+      var dataObject= data.val();
+      var youtubeLink= dataObject.url;
+      console.log(youtubeLink);
+      localStorage.setItem("youtubeLink", youtubeLink);
+      })*/
 
 
   	</script>
