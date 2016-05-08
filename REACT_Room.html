@@ -293,8 +293,7 @@ $(document).ready(function(){
         }
         console.log("Wilma's data: ", snapshot.val());
         }*/
-
-
+        changeImg(emotion);
       }
 
       function new_vote(vote, value) {
@@ -428,9 +427,36 @@ $(document).ready(function(){
       upvotesRef.transaction(function (current_value) {
       return (current_value || 0) + 1;
       });*/
+//change image on click
+function changeImg(image){
+if (image == "yay") {
+  document.getElementById("yay").src = "images/yay2.png";
+  setTimeout(function()
+    {document.getElementById("yay").src="images/yay.png"}, 300)
+} 
+else if(image == "poop"){
+  document.getElementById("poop").src = "images/poop2.png";
+  setTimeout(function()
+    {document.getElementById("poop").src="images/poop.png"}, 300)
+}
+else if(image=="lies"){
+  document.getElementById("lies").src = "images/nay2.png";
+  setTimeout(function()
+    {document.getElementById("lies").src="images/nay.png"}, 300)
+}
+else if(image == "scary"){
+  document.getElementById("scary").src = "images/wtf2.png";
+  setTimeout(function()
+    {document.getElementById("scary").src="images/wtf.png"}, 300)
+}
+else if (image=="agreed"){
+  document.getElementById("agreed").src = "images/uh2.png";
+  setTimeout(function()
+    {document.getElementById("agreed").src="images/uh.png"}, 300);
 
+}
 
-
+}
 
     </script>
   </body>
