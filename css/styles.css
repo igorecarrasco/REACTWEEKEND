@@ -4,12 +4,18 @@ body {
 	padding:0;
 	margin:0;
 }
+h1{
+	margin:0;
+	padding-top:10px;
+}
 .titletitle {
 	position: relative;
+	top:10vh;
 	font-family: Kanit;
 	font-weight: 800;
 	color:#DDDDDD;
 	left:200px;
+	margin:0;
 }
 #voting_buttons {
 	position: absolute;
@@ -49,13 +55,12 @@ body {
 	z-index:5;
 }
 .header {
-	position: relative;
+	position: absolute;
 	top:2vh;
 	display: flex;
 	justify-content: center;
 	width: 100vw;
 	height:auto;
-	margin-bottom: 30px;
 }
 .header img {
 	width:1300px;
@@ -63,13 +68,13 @@ body {
 }
 .wrapper {
 	position: relative;
-	height: 50vh;
 	width:100vw;
 	display:flex;
 	align-items:center;
 	justify-content: center;
 }
 #available_rooms {
+	margin-top:100px;
 	width: 100vw;
 	display:flex;
 	justify-content: center;
@@ -103,40 +108,45 @@ a {
 	padding:0;
 	margin: 0;
 }
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 740px) {
+	body {
+		overflow:hidden;
+		width: 99vw;
+		height:99vh;
+	}
 	iframe {
 		display:none;
 	}
-	.titletitle {
-		text-align: center;
-		left:0;
-	}
 	.header img {
-	width:245%;
-	height:55px;
-	}
-	.wrapper { 
-		flex-direction: column;
-		height:100%;
-	}
-	.twitwidget{
-		margin-left:0;
-		top:20px;
+		width:245%;
+		height:55px;
+		margin-bottom:0;
 	}
 	#voting_buttons {
 		position: relative;
-		top:40px;
-		height:140px;
+		display:flex;
+		top:35px;
+		height:auto;
 		width:100%;
-		justify-content:center;
-		align-content: center;
-		flex-wrap: wrap;
-	}
-	body {
-		overflow:visible;	
+		align-items:center;
+		justify-content: space-around;
 	}
 	.graph {
-		width: 415px;
+		width: 100%;
 		height:315px;
+	}
+	.twitwidget{
+		display: none;
+		padding:0;
+	}
+	.titletitle{
+		display:none;
+	}
+	.wrapper {
+		height:60%;
+		width:100vw;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
 	}
 }
