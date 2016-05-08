@@ -121,9 +121,8 @@ a {
 	.header img {
 		display:block;
 		width:400px;
-		height:55px;
+		height:30px;
 		margin-bottom:0;
-		margin-left:-30%;
 	}
 	#voting_buttons {
 		position: relative;
@@ -152,5 +151,8 @@ a {
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
+	}
+	.youtubevid {
+		width:100%;
 	}
 }
