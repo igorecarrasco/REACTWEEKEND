@@ -4,6 +4,16 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      li{
+        color:white;
+        left:5px;
+        font-size: 25px;
+      }
+      a{
+        color:white;
+      }
+    </style>
   </head>
   <body>
 
@@ -25,8 +35,8 @@
 
     <button id = "add_room" onclick="addRoom()">Add</button>
 
-    <div id = "available_rooms">
-      <ul id = "rooms_list">
+    <div>
+      <ul id = "all_rooms_list">
 
 
       </ul>
@@ -68,10 +78,10 @@
       })*/
 
         //console.log("name: " + name + " video: " + video);
-      }
+      
 
       function createRoomList(){
-        var allRooms = $("#rooms_list");
+        var allRooms = $("#all_rooms_list");
         roomRef.on("child_added", function(snapshot){
           var new_room = snapshot.val();
           var room_li = '<li><a href=make_graph.html onclick="setCurrentRoom(\''+new_room.room_name+'\')" >' +new_room.room_name+ '</a></li>';
