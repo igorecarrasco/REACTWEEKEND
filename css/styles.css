@@ -8,6 +8,56 @@ h1{
 	margin:0;
 	padding-top:10px;
 }
+.pooprain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/8c/65/8c65e5de808ec301754508366480250c.png');
+}
+.yayrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/a0/38/a038e6d3f342253c5ea3c057fe37b41f.png');
+}
+.nayrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/e9/90/e9903d3e0dc2042d5a4b473485ecc5de.png');
+}
+.wtfrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/e7/3e/e73ed4d57793a56fcb7ff8fb49ef45bc.png');
+}
+.uhrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/db/d5/dbd57bcbb3fff7245025a39061012200.png');
+}
 .titletitle {
 	position: relative;
 	top:10vh;
