@@ -111,12 +111,14 @@ a {
 @media screen and (max-width: 740px) {
 	body {
 		overflow:hidden;
-		width: 99%;
-		height:99%;
+		width: 90vw;
 		margin:0;
 	}
 	iframe {
 		display:none;
+	}
+	.header {
+		width: 100%;
 	}
 	.header img {
 		display:block;
@@ -128,13 +130,12 @@ a {
 		position: relative;
 		display:flex;
 		top:35px;
-		width:100%;
-		height:auto;
+		width:100vw;
 		align-items:center;
 		justify-content: center;
 	}
 	.graph {
-		width: 400px;
+		width: 100%;
 		height:315px;
 	}
 	.twitwidget{
