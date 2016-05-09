@@ -1,0 +1,235 @@
+body {
+	background-color: black;
+	font-family: 'Kanit', sans-serif;
+	padding:0;
+	margin:0;
+}
+h1{
+	margin:0;
+	padding-top:10px;
+}
+.yayrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/a0/38/a038e6d3f342253c5ea3c057fe37b41f.png');
+}
+.pooprain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/8c/65/8c65e5de808ec301754508366480250c.png');
+}
+.liesrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/e9/90/e9903d3e0dc2042d5a4b473485ecc5de.png');
+}
+.scaryrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/e7/3e/e73ed4d57793a56fcb7ff8fb49ef45bc.png');
+}
+.agreedrain {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:312983712983712012938;
+    width:30px;
+    height:30px;
+    background-size: contain;
+    background-image: url('http://emojipedia-us.s3.amazonaws.com/cache/db/d5/dbd57bcbb3fff7245025a39061012200.png');
+}
+.titletitle {
+	position: relative;
+	top:10vh;
+	font-family: Kanit;
+	font-weight: 800;
+	color:#DDDDDD;
+	left:200px;
+	margin:0;
+}
+#voting_buttons {
+	position: absolute;
+	display:flex;
+	height:60px;
+	width: 100%;
+	justify-content: space-between;
+}
+.vote {
+	width:50px;
+	height:50px;
+	cursor: pointer;
+	padding:4px;
+	transition: background-color 0.3s ease-out;
+}
+
+#yay {
+	border: 2px solid orange;
+}
+#yay:active {
+	background-color:rgba(255, 165, 0,0.3);
+}
+#poop {
+	border: 2px solid green;
+}
+#poop:active {
+	background-color: rgba(0, 128, 0,0.3);
+}
+#lies {
+	border: 2px solid teal;
+}
+#lies:active {
+	background-color: rgba(0, 128, 128,0.3);
+}
+#scary {
+	border:2px solid purple;
+}
+#scary:active {
+	background-color: rgba(128, 0, 128,0.3);
+}
+#agreed {
+	border:2px solid #ffcc00;
+}
+#agreed:active {
+	background-color: rgba(255, 204, 0,0.3);
+}
+.twitwidget {
+	padding-top:110px;
+	margin-left:60px;
+}
+.graph {
+	position: relative;
+	top:0px;
+	z-index:5;
+}
+.header {
+	position: absolute;
+	top:10px;
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	height:auto;
+}
+.header img {
+	width:1300px;
+	height:55px;
+}
+.wrapper {
+	position: relative;
+	width:100vw;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+#available_rooms {
+	margin-top:100px;
+	width: 100vw;
+	display:flex;
+	justify-content: center;
+}
+#rooms_list {
+	list-style-type: none;
+	padding: 0;
+
+}
+.room_link {
+	width:500px;
+	height:100px;
+	padding:0;
+	border:2px yellow solid;
+	margin: 5px;
+	background-color:rgba(255,255,0,0.6));
+	overflow:hidden;
+}
+.roomtitle{
+	position: absolute;
+	top:100px;
+	width:100%;
+}
+.youtubevid {
+	position:relative;
+	width:560;
+	height:315;
+}
+a {
+	text-decoration: none;
+	padding:0;
+	margin: 0;
+}
+	label {
+		color:white;
+	}
+@media screen and (max-width: 740px) {
+	body {
+		overflow:hidden;
+		width: 90vw;
+		margin:0;
+	}
+	iframe {
+		display:none;
+	}
+	.header {
+		width: 100%;
+	}
+	.header img {
+		display:block;
+		width:375px;
+		height:30px;
+		margin-bottom:0;
+	}
+	#voting_buttons {
+		position: relative;
+		display:flex;
+		top:35px;
+		width:100vw;
+		align-items:center;
+		justify-content: center;
+	}
+	.graph {
+		width: 100%;
+		height:315px;
+	}
+	.twitwidget{
+		display: none;
+		padding:0;
+		margin-left:0;
+	}
+	.titletitle{
+	top:10vh;
+	font-family: Kanit;
+	font-weight: 800;
+	color:#DDDDDD;
+	left:8%;
+	margin:0;
+	text-align: center;
+	}
+	.wrapper {
+		height:60%;
+		width:100%;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.youtubevid {
+		width:100%;
+	}
+}

@@ -224,8 +224,7 @@
             console.log(agreed_list)
             console.log(lies_list)
             console.log(poop_list)
-            console.log(scary_list) 
-            console.log("HERE")
+            console.log(scary_list)
             
             vid_time_stamps.push(0)
             console.log("time at 0 " + vid_time_stamps[0])
@@ -239,16 +238,7 @@
                 //console.log("time stamp " + (vid_time_stamps[i-1]))
                 //if((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1]))){
                 //console.log((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1])))
-                console.log("time at i " + time_stamps[i])
-                console.log(" time at i minus one " + time_stamps[i-1])
-                console.log("vid time " + vid_time_stamps[i-1])
-                var x = (time_stamps[i] - time_stamps[i-1])
-                console.log(x)
-                a = parseInt(x/1000) + parseInt(x%1000) + vid_time_stamps[i-1]
-                //b = x%1000
-                x = a
-                vid_time_stamps.push(x);
-                //vid_time_stamps.push(((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1]))/1000))
+                vid_time_stamps.push((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1])))
                 //console.log(vid_time_stamps[i]) 
                 //}
                 
@@ -276,14 +266,12 @@
             //console.log(votes_matrix[30])
             //drawChart(votes_matrix)
             console.log(votes_matrix)
-            
             drawChart(votes_matrix)
             //console.log("votes " + snapshot.val());
             
         });
     }
     function drawChart(matrix) {
-
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'Video Time Stamp');
       data.addColumn('number', 'Yay');
@@ -295,7 +283,7 @@
       var options = {
         chart: {
           title: 'Reactions for the ' + myRoom,
-          subtitle: 'Graphed as time stamps in seconds'
+          subtitle: 'Graphed in video time stamp'
         },
         width: 900,
         height: 500
