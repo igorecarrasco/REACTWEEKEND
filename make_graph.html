@@ -9,7 +9,7 @@
 
   </head>
   <script>
-      var myRoom = (localStorage.getItem("see_room_data"));
+      var myRoom = "Democratic Debate";
       var dataRef = new Firebase('https://boiling-heat-8030.firebaseio.com/REACT');
       var allRoomsRef = dataRef.child("rooms");
       var time_stamps = [];
@@ -31,19 +31,13 @@
             snapshot.forEach(function(data) {
                 console.log("The " + data.key() + " votes are " + data.val());
                 time_stamps.push(data.key())
-
             });
             dataRef.child("votes/" + myRoom + "/total_users").on("value", function(snapshot){
                 total_users = snapshot.val();
-
             });
             dataRef.child("votes/" + myRoom + "/event_start").on("value", function(snapshot){
                 event_start = snapshot.val();
-
             });
-
-
-
             //console.log(time_stamps)
             for(i = 0; i < time_stamps.length; i++){
                 var votes = {}
@@ -154,23 +148,16 @@
             snapshot.forEach(function(data) {
                 //console.log("The " + data.key() + " votes are " + data.val());
                 time_stamps.push(data.key())
-
             });
             dataRef.child("votes/" + myRoom + "/active_users").on("value", function(snapshot){
                 total_users = snapshot.val();
                 console.log(total_users)
-
             });
             dataRef.child("votes/" + myRoom + "/event_start").on("value", function(snapshot){
                 
                 event_start = snapshot.val();
                 console.log("event start " + event_start)
-
-
             });
-
-
-
             //console.log(time_stamps)
             for(i = 0; i < time_stamps.length; i++){
                 var votes = {}
@@ -249,7 +236,6 @@
                 //console.log("time stamp " + parseInt(time_stamps[i]))
                 //console.log("time stamp " +  parseInt(time_stamps[i-1]))
                 //console.log("time stamp " + (vid_time_stamps[i-1]))
-
                 //if((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1]))){
                 //console.log((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1])))
                 vid_time_stamps.push((parseInt(time_stamps[i]) - parseInt(time_stamps[i-1]) + parseInt(vid_time_stamps[i-1])))
@@ -285,9 +271,7 @@
             
         });
     }
-
     function drawChart(matrix) {
-
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'Video Time Stamp');
       data.addColumn('number', 'Yay');
@@ -295,9 +279,7 @@
       data.addColumn('number', 'Lies');
       data.addColumn('number', 'Poop');
       data.addColumn('number', 'Scary');
-
       data.addRows(matrix);
-
       var options = {
         chart: {
           title: 'Reactions for the ' + myRoom,
@@ -306,12 +288,9 @@
         width: 900,
         height: 500
       };
-
       var chart = new google.charts.Line(document.getElementById('linechart'));
-
       chart.draw(data, options);
     }
-
         
     
   </script>
