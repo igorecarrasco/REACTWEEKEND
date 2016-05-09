@@ -485,8 +485,9 @@ else if (image=="agreed"){
       function pumpkins(image) {
         console.log(image);
         var pumpkin = $('<div class="'+image+'rain"></div>');
-        $('#pumpkins').prepend(pumpkin);
 
+        $('#pumpkins').prepend(pumpkin);
+        
         pumpX = Math.floor(Math.random() * $('#stream').width());
         pumpSpd = Math.floor(Math.random() + 5000);
 
