@@ -435,13 +435,17 @@ $(document).ready(function(){
 //change image on click
 function changeImg(image){
 if (image == "yay") {
+   $('.youtubevid').prepend("<div id=pumpkins></div>");
+  pumpkins(image);
+  setTimeout(function(){ 
+    $('#pumpkins').remove()}, 5000);
   document.getElementById("yay").src = "images/yay2.png";
   setTimeout(function()
     {document.getElementById("yay").src="images/yay.png"}, 300)
 } 
 else if(image == "poop"){
   $('.youtubevid').prepend("<div id=pumpkins></div>");
-  pumpkins();
+  pumpkins(image);
   setTimeout(function(){ 
     $('#pumpkins').remove()}, 5000);
   document.getElementById("poop").src = "images/poop2.png";
@@ -449,16 +453,28 @@ else if(image == "poop"){
     {document.getElementById("poop").src="images/poop.png"}, 300)
 }
 else if(image=="lies"){
+   $('.youtubevid').prepend("<div id=pumpkins></div>");
+  pumpkins(image);
+  setTimeout(function(){ 
+    $('#pumpkins').remove()}, 5000);
   document.getElementById("lies").src = "images/nay2.png";
   setTimeout(function()
     {document.getElementById("lies").src="images/nay.png"}, 300)
 }
 else if(image == "scary"){
+   $('.youtubevid').prepend("<div id=pumpkins></div>");
+  pumpkins(image);
+  setTimeout(function(){ 
+    $('#pumpkins').remove()}, 5000);
   document.getElementById("scary").src = "images/wtf2.png";
   setTimeout(function()
     {document.getElementById("scary").src="images/wtf.png"}, 300)
 }
 else if (image=="agreed"){
+   $('.youtubevid').prepend("<div id=pumpkins></div>");
+  pumpkins(image);
+  setTimeout(function(){ 
+    $('#pumpkins').remove()}, 5000);
   document.getElementById("agreed").src = "images/uh2.png";
   setTimeout(function()
     {document.getElementById("agreed").src="images/uh.png"}, 300);
@@ -466,9 +482,11 @@ else if (image=="agreed"){
 }
 
 }
-      function pumpkins() {
-        var pumpkin = $('<div class="pooprain"></div>');
+      function pumpkins(image) {
+        console.log(image);
+        var pumpkin = $('<div class="'+image+'rain"></div>');
         $('#pumpkins').prepend(pumpkin);
+
         pumpX = Math.floor(Math.random() * $('#stream').width());
         pumpSpd = Math.floor(Math.random() + 5000);
 
@@ -476,18 +494,14 @@ else if (image=="agreed"){
         pumpkin.animate({
             top: "500px",
             opacity : "0",
-
         }, pumpSpd, function(){
             $(this).remove();
-            pumpkins();
+            // pumpkins(image);
         });
 
     }
-    var timer = Math.floor(Math.random() +1000);
-    
-    window.setInterval(function(){
-        pumpkins();
-    }, timer);
+
+
     </script>
   </body>
 </html>
