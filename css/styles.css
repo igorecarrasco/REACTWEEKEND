@@ -60,7 +60,7 @@ h1{
 }
 .titletitle {
 	position: relative;
-	top:10vh;
+	top:13vh;
 	font-family: Kanit;
 	font-weight: 800;
 	color:#DDDDDD;
@@ -190,6 +190,9 @@ a {
 	.header {
 		width: 100%;
 	}
+	.room_link {
+		width:95%;
+}
 	.header img {
 		display:block;
 		width:375px;
